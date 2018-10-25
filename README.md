@@ -23,4 +23,4 @@ PS D:\> .\PESecInfo.exe -h
 ```
 
 
-<img src="https://osandamalith.files.wordpress.com/2018/10/dep.gif">
+
