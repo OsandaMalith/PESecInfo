@@ -22,5 +22,20 @@ PS D:\> .\PESecInfo.exe -h
  
 ```
 
+Test run
 
+```
+PS D:\> .\PESecInfo.exe .\cfg2.exe
+
+           \\\     PE Sec Info
+    .---.  ///     Coded by @OsandaMalith
+   (:::::)(_)():   https://osandamalith.com
+    `---'  \\\
+           ///
+[+] Arch       : 32-bit
+[+] ASLR       : True
+[+] DEP        : True
+[+] CFG        : True
+[+] Isolation  : True
+```
 
