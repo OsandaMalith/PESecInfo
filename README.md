@@ -1,5 +1,9 @@
 # PESecInfo
 
+A simple tool to view important DLL Characteristics and change DEP and ASLR
+
+https://osandamalith.com/2018/10/24/pe-sec-info-a-simple-tool-to-manipulate-aslr-and-dep-flags/
+
 ```
 PS D:\> .\PESecInfo.exe -h
 
