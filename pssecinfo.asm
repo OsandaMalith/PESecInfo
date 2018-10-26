@@ -1,34 +1,40 @@
 .386
 .model flat,stdcall
 option casemap:none
-include windows.inc
-include kernel32.inc
-include user32.inc
-include imagehlp.inc
+
 include msvcrt.inc
+include user32.inc
 include macros.asm
 include shell32.inc
+include windows.inc
+include kernel32.inc
+include imagehlp.inc
 
 includelib user32.lib
-includelib kernel32.lib
-includelib imagehlp.lib
 includelib msvcrt.lib
 includelib shell32.lib
+includelib kernel32.lib
+includelib imagehlp.lib
 
 isDEP proto PE:LOADED_IMAGE
 isCFG proto PE:LOADED_IMAGE
-isDotNet proto PE:LOADED_IMAGE
-isIsolation proto PE:LOADED_IMAGE
-checkPE proto PE:LOADED_IMAGE
-checkArch proto PE:LOADED_IMAGE
-isDynamicBase2 proto PE:LOADED_IMAGE
 isAuth proto PE:LOADED_IMAGE
-disableAslr proto PE:LOADED_IMAGE
+checkPE proto PE:LOADED_IMAGE
+enableDep proto PE:LOADED_IMAGE
+checkArch proto PE:LOADED_IMAGE
 disableDep proto PE:LOADED_IMAGE
 enableAslr proto PE:LOADED_IMAGE
-enableDep proto PE:LOADED_IMAGE
+isIsolation proto PE:LOADED_IMAGE
+disableAslr proto PE:LOADED_IMAGE
+isDynamicBase2 proto PE:LOADED_IMAGE
 
 system PROTO C, :PTR BYTE
+
+; License:
+; This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. 
+; To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
+; Author: Osanda Malith Jayathissa 
+; Website: http://osandamalith.com
 
 .data
 command BYTE "color 17",0
@@ -49,12 +55,12 @@ fname db 20 dup(?)
 
 .code
 start proc 
-	LOCAL PE:LOADED_IMAGE	
-	SetConsoleCaption chr$("PE Sec Info")
-	invoke system, addr command
-	invoke crt_printf, addr banner
-	
-	call GetCommandLineW        ; EAX = pointer to the command line
+    LOCAL PE:LOADED_IMAGE	
+    SetConsoleCaption chr$("PE Sec Info")
+    invoke system, addr command
+    invoke crt_printf, addr banner
+
+    call GetCommandLineW        ; EAX = pointer to the command line
 
     lea ecx, dword ptr[ebp - 4] ; Get the current address of [ebp-4]
     push ecx                    ; int *pNumArgs (Pointer to a SDWORD, here at ebp-4)
